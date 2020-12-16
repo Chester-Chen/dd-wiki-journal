@@ -4,6 +4,17 @@
   justify-content: space-between;
 }
 
+#btn {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.rocket-fly {
+  animation: fly 1s;
+  animation-timing-function: cubic-bezier(0.88, -0.08, 0.85, -0.59);
+}
+
 @media only screen and (max-width: 750px) {
   #header {
     background-color: yellow;
@@ -12,5 +23,27 @@
   }
   .title {
     order: -1;
+  }
+}
+
+@keyframes fly {
+  from {
+    transform: translateY(-20px);
+  }
+  60% {
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-1000px);
   }
 }

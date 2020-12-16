@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import SimpleMDE from 'react-simplemde-editor';
 import * as dd from 'dingtalk-jsapi';
-import { Button } from 'antd';
+import lottie from 'lottie-web';
+import { Button, message } from 'antd';
 
 import 'easymde/dist/easymde.min.css';
 
@@ -23,11 +24,23 @@ export default class EditorPrv extends Component<any, any> {
   baseUrl = 'http://dingtalk.crazybro.top';
 
   async componentDidMount() {
-    await this.getUsrId();
+    // await this.getUsrId();
     const { userid } = this.state;
     // alert('userid: ' + userid);
-    this.props.fetchEditUsr(await this.getUsrNameByUsrId(userid));
+    // this.props.fetchEditUsr(await this.getUsrNameByUsrId(userid));
+    this.createBtn();
   }
+
+  createBtn = () => {
+    let lte = lottie.loadAnimation({
+      container: document.querySelector('#btn')!,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'https://assets7.lottiefiles.com/private_files/lf30_oxurudgk.json',
+    });
+    lte.play();
+  };
 
   // 获取免登码
   getAuthCode = () => {
@@ -114,16 +127,31 @@ export default class EditorPrv extends Component<any, any> {
     });
   };
 
+  // 去除fly样式
+  rockedClick = () => {
+    let btn = document.querySelector('#btn');
+    btn?.classList.remove('rocket-fly');
+    message.success('submit success✨');
+  };
+
+  // the rocked is clicked
+  test = () => {
+    let btn = document.querySelector('#btn');
+    btn?.classList.add('rocket-fly');
+    btn?.addEventListener('webkitAnimationEnd', this.rockedClick);
+  };
+
   render() {
     return (
-      <>
+      <div>
         <SimpleMDE
           getMdeInstance={(i: object) => this.setState({ editor: i })}
         />
-        <Button type="primary" onClick={this.submit}>
+        {/* <Button type="primary" onClick={this.submit}>
           submit
-        </Button>
-      </>
+        </Button> */}
+        <div id="btn" onClick={this.test}></div>
+      </div>
     );
   }
 }
