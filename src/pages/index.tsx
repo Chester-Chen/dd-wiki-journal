@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Editor from '@/components/Editor';
 import EditorPrv from '@/components/EditorPrv';
 import { Card } from 'antd';
+
+import './index.less';
 
 export default () => {
   const [editUsr, setEditUsr] = useState('');
@@ -14,16 +15,9 @@ export default () => {
 
   function setHeader() {
     return (
-      <div
-        className="header"
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div className="date">Date: {getCurDate()}</div>
-        <div className="title">日报填写</div>
+      <div id="header">
+        <div className="date">Today: {getCurDate()}</div>
+        <h1 className="title">日报填写</h1>
         <div className="cur-usr">当前编辑: {editUsr}</div>
       </div>
     );
@@ -45,7 +39,7 @@ export default () => {
   // 获取当前用户名
 
   return (
-    <div style={{ padding: '1.5rem' }}>
+    <div style={{ padding: '1rem' }}>
       <Card {...cardProps} headStyle={{ textAlign: 'center' }}>
         {/* <Editor /> */}
         <EditorPrv fetchEditUsr={(u: string) => setEditUsr(u)} />

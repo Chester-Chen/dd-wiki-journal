@@ -49,6 +49,7 @@ export default class EditorPrv extends Component<any, any> {
           });
         });
       } catch (error) {
+        alert(JSON.stringify(error) + ' ,报错请@陈志文');
         reject(error);
       }
     });

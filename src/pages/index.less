@@ -1,7 +1,16 @@
-
-.normal {
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.title {
-  background: rgb(121, 242, 157);
+@media only screen and (max-width: 750px) {
+  #header {
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    order: -1;
+  }
 }
