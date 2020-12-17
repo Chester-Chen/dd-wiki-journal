@@ -135,7 +135,7 @@ export default class EditorPrv extends Component<any, any> {
   };
 
   // the rocked is clicked
-  test = () => {
+  fire = () => {
     let btn = document.querySelector('#btn');
     btn?.classList.add('rocket-fly');
     btn?.addEventListener('webkitAnimationEnd', this.rockedClick);
@@ -150,7 +150,7 @@ export default class EditorPrv extends Component<any, any> {
         {/* <Button type="primary" onClick={this.submit}>
           submit
         </Button> */}
-        <div id="btn" onClick={this.test}></div>
+        <div id="btn" onClick={this.fire}></div>
       </div>
     );
   }
